@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../index.css";
-import { storage } from "../firebase";
+import { storage } from "../firebaseAuth";
 import { listAll, ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 import { v4 } from "uuid";
+
 const Profile = () => {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);

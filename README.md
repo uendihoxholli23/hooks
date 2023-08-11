@@ -19,7 +19,7 @@ Theme changing color from light mode to dark mode using context.
 
 ---
 
-Doing: And add 1 profile image inside the context with url for the user besides name, email etc
+Doing:
 Also add a role parametër such as "normal", "admin" and add a button to switch the role
 Show different view for normal and admin user based on the role in the AuthContext
 
@@ -28,3 +28,7 @@ Show different view for normal and admin user based on the role in the AuthCon
 - AuthContext - allows you to easily share authentication information and functionality throughout your application, without the need to pass props through multiple components or use global variables
 - If your application uses authentication, many of its components will need to know the current user’s authentication state.
 - To display an image from a URL, I used the img tag and set its src prop to the complete URL of the image.
+
+---
+
+Authentication - we are going to have a production and a development version so everything that we do on the development version we also need to do on the production version to make sure that they're both in sync with each other
