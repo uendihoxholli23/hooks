@@ -33,24 +33,27 @@ const Profile = () => {
   return (
     <>
       <div className="App">
-        <input
-          type="file"
-          onChange={(event) => {
-            setImageUpload(event.target.files[0]);
-          }}
-        />
-        <button onClick={uploadImage}> Upload Image</button>
+        <div>
+          <input
+            type="file"
+            onChange={(event) => {
+              setImageUpload(event.target.files[0]);
+            }}
+          />
+          <button onClick={uploadImage}> Upload Image</button>
+        </div>
+
         {imageUrls.map((url, index) => {
           return (
             <img
               key={index}
               src={url}
               style={{
-                width: "200px",
-                height: "200px",
+                width: "100px",
+                height: "100px",
                 borderRadius: "50%",
                 objectFit: "cover",
-                border: "4px solid green",
+                border: "2px solid blue",
               }}
             />
           );

@@ -5,11 +5,10 @@ import { useAuth } from "../Context/AuthContext";
 import Profile from "../Components/Profile";
 import { Link, useNavigate } from "react-router-dom";
 
-function Signup() {
+function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState("");
   const navigate = useNavigate();
@@ -17,17 +16,14 @@ function Signup() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Password do not match");
-    }
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await login(emailRef.current.value, passwordRef.current.value);
       navigate("/");
     } catch (error) {
       console.error(error);
-      setError("Failed to create an account");
+      setError("Failed to sign in");
     }
     setLoading(false);
   }
@@ -36,7 +32,7 @@ function Signup() {
       <Card>
         <Profile />
         <Card.Body>
-          <h2 className="text-center mb-4">Sign up</h2>
+          <h2 className="text-center mb-4">Log In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
@@ -51,19 +47,14 @@ function Signup() {
                 required
               ></Form.Control>
             </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control
-                type="password"
-                ref={passwordConfirmRef}
-                required
-              ></Form.Control>
-            </Form.Group>
             <Button disabled={loading} className="" type="submit">
-              Sign up
+              Log In
             </Button>
+            <div className="w-100 text-center mt-3">
+              <Link to="/forgot-password">Forgot password?</Link>
+            </div>
             <div className="w-100 text-center mt-2">
-              Already have an account? <Link to="/login">Log in</Link>
+              Create an account? <Link to="/signup">Sign up</Link>
             </div>
           </Form>
         </Card.Body>
@@ -72,4 +63,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Login;

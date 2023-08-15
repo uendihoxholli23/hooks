@@ -12,5 +12,6 @@ const app = firebase.initializeApp({
 });
 console.log(import.meta.env);
 export const storage = getStorage(app);
-export const auth = getAuth(app);
+const auth = getAuth(app);
+export { auth };
 export default app;
