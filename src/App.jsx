@@ -9,11 +9,11 @@ import { AuthProvider } from "./Context/AuthContext";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute";
 import ForgotPassword from "./Components/ForgotPassword";
+import UpdateProfile from "./Components/UpdateProfile";
 
 export const ThemeContext = createContext(null);
 
 export default function App() {
-  console.log("env: ", import.meta.env);
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
@@ -31,6 +31,14 @@ export default function App() {
                   element={
                     <PrivateRoute>
                       <Dashboard />
+                    </PrivateRoute>
+                  }
+                ></Route>
+                <Route
+                  path="/update-profile"
+                  element={
+                    <PrivateRoute>
+                      <UpdateProfile />
                     </PrivateRoute>
                   }
                 ></Route>

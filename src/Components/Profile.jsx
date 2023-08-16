@@ -21,7 +21,6 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    console.log("images");
     listAll(imagesListRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {

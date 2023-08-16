@@ -10,7 +10,6 @@ const app = firebase.initializeApp({
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 });
-console.log(import.meta.env);
 export const storage = getStorage(app);
 const auth = getAuth(app);
 export { auth };
