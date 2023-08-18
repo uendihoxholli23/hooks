@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "../index.css";
 import { storage } from "../firebaseAuth";
 import { listAll, ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 import { v4 } from "uuid";
+import Avatar from "react-avatar-edit";
 
 const Profile = () => {
   const [imageUpload, setImageUpload] = useState(null);
@@ -15,7 +16,7 @@ const Profile = () => {
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
-        setImageUrls((prev) => [...prev, url]);
+        setImageUrls(() => [url]);
       });
     });
   };
@@ -24,11 +25,12 @@ const Profile = () => {
     listAll(imagesListRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
-          setImageUrls((prev) => [...prev, url]);
+          setImageUrls(() => [url]);
         });
       });
     });
   }, []);
+
   return (
     <>
       <div className="App">
@@ -39,7 +41,6 @@ const Profile = () => {
               setImageUpload(event.target.files[0]);
             }}
           />
-          <button onClick={uploadImage}> Upload Image</button>
         </div>
 
         {imageUrls.map((url, index) => {
@@ -52,11 +53,11 @@ const Profile = () => {
                 height: "100px",
                 borderRadius: "50%",
                 objectFit: "cover",
-                border: "2px solid blue",
               }}
             />
           );
         })}
+        <button onClick={uploadImage}> Upload Image</button>
       </div>
     </>
   );

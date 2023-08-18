@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../Context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-
+import Profile from "./Profile";
 export default function Dashboard() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
@@ -23,6 +23,7 @@ export default function Dashboard() {
   return (
     <>
       <Card>
+        <Profile />
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}

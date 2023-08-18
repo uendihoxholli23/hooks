@@ -2,7 +2,6 @@ import React from "react";
 import { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Context/AuthContext";
-import Profile from "../Components/Profile";
 import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
@@ -34,7 +33,6 @@ function Signup() {
   return (
     <div>
       <Card>
-        <Profile />
         <Card.Body>
           <h2 className="text-center mb-4">Sign up</h2>
           {error && <Alert variant="danger">{error}</Alert>}

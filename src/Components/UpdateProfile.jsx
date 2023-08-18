@@ -2,8 +2,8 @@ import React from "react";
 import { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Context/AuthContext";
-import Profile from "../Components/Profile";
 import { Link, useNavigate } from "react-router-dom";
+import Profile from "../Components/Profile";
 
 function UpdateProfile() {
   const emailRef = useRef();

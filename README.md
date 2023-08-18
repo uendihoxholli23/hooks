@@ -31,4 +31,8 @@ Show different view for normal and admin user based on the role in the AuthCon
 
 ---
 
-Authentication - we are going to have a production and a development version so everything that we do on the development version we also need to do on the production version to make sure that they're both in sync with each other
+## Authentication - we are going to have a production and a development version so everything that we do on the development version we also need to do on the production version to make sure that they're both in sync with each other
+
+- I called updateEmail(a method that enables us to update the user’s email) and updatePassword(a method that we’ll use to update the user’s password.) from firebase/auth.
+- I verify that the new email address is not equal to the user’s current email address. If the email address is different, we run our updateEmail method using the new email as an argument and push the returned promise to the promises array
+  -If the account was not updated for any reason, we chain a .catch statement that will set the error message to display 'failed to update account', We set loading to false to enable to the submit button again.
